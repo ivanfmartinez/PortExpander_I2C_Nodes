@@ -54,7 +54,6 @@ void setup() {
   Homie_setFirmware("ifm-asfsmart-7r-inputs", "1.0.2");
   
   relayBeforeHomieSetup();
-  timestamp.beforeHomieSetup();
 
   Homie.setSetupFunction(setupHandler);
   Homie.setup();
