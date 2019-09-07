@@ -1,19 +1,19 @@
 #include <PortExpander_I2C_Nodes.hpp> 
  
 ExpanderRelayNode::ExpanderRelayNode(const char* node, const int relayPin, PortExpander_I2C * expander) 
-   : RelayNode(node, relayPin)
+   : RelayNode(node, relayPin, -1, true)
 {
     _expander = expander;
 };
 
 void ExpanderRelayNode::setRelayState(bool on) 
 {
-   _expander->digitalWrite(getRelayPin(), on ? LOW : HIGH);
+   _expander->digitalWrite(getRelayPin(), on ? relayOnValue() : relayOffValue());
 };
 
 bool ExpanderRelayNode::readRelayState() 
 {
-   return _expander->digitalRead(getRelayPin()) == LOW;
+   return _expander->digitalRead(getRelayPin()) == relayOnValue();
 };
 
 void ExpanderRelayNode::setupRelay() 
