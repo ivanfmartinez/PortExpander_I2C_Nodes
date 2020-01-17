@@ -10,9 +10,9 @@ private:
    PortExpander_I2C * _expander;
 
 protected:
-  void setRelayState(bool on) override;
-  bool readRelayState() override;
-  void setupRelay() override;
+  virtual void setRelayState(bool on) override;
+  virtual bool getRelayState() override;
+  virtual void setupRelay() override;
 
 public:
   ExpanderRelayNode(const char* node, const int relayPin, PortExpander_I2C * expander) ;
@@ -25,8 +25,8 @@ private:
    PortExpander_I2C * _expander;
 
 protected:
-   void setupPin() override;
-   byte readPin() override;
+   virtual void setupPin() override;
+   virtual byte readPin() override;
 
 public:
     ExpanderContactNode(const char* node, const int contactPin, PortExpander_I2C * expander);

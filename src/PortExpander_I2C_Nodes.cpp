@@ -8,12 +8,12 @@ ExpanderRelayNode::ExpanderRelayNode(const char* node, const int relayPin, PortE
 
 void ExpanderRelayNode::setRelayState(bool on) 
 {
-   _expander->digitalWrite(getRelayPin(), on ? relayOnValue() : relayOffValue());
+   _expander->digitalWrite(getRelayPin(), on ? _relayOnValue : _relayOffValue);
 };
 
-bool ExpanderRelayNode::readRelayState() 
+bool ExpanderRelayNode::getRelayState() 
 {
-   return _expander->digitalRead(getRelayPin()) == relayOnValue();
+   return _expander->digitalRead(getRelayPin()) == _relayOnValue;
 };
 
 void ExpanderRelayNode::setupRelay() 
